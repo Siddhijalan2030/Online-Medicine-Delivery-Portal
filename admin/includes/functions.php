@@ -1,7 +1,5 @@
 <?php
 $connection = mysqli_connect("localhost", "root", "", "PharmEasy");
-// $connection = mysqli_connect("localhost", "id18666014_md_taha_ahmed", "bGCL0+&4qT64IM_{", "id18666014_pharmeasy");
-// query functions (start)
 function query($query)
 {
     global $connection;
@@ -25,13 +23,10 @@ function single_query($query)
         return 0;
     }
 }
-// query functions (end)
-// redirect functions (start)
 function post_redirect($url)
 {
     ob_start();
     header('Location: ' . $url);
-    // header('Location: https://md-taha-ahmed.000webhostapp.com/pharmeasy/admin/' . $url);
     ob_end_flush();
     die();
 }
@@ -40,12 +35,7 @@ function get_redirect($url)
     echo " <script> 
     window.location.href = '$url'; 
     </script>";
-    // echo "<script>
-    // window.location.href = 'https://md-taha-ahmed.000webhostapp.com/pharmeasy/admin/" . $url . "';
-    // </script>";
 }
-// redirect functions (end)
-// messages function (start)
 function message()
 {
     if ($_SESSION['message'] == "loginErr") {
@@ -95,8 +85,6 @@ function message()
         unset($_SESSION['message']);
     }
 }
-// messages function (end)
-// login function (start)
 function login()
 {
     if (isset($_POST['login'])) {
@@ -117,8 +105,6 @@ function login()
         }
     }
 }
-// login function (end)
-// user functions (start)
 function all_users()
 {
     $query = "SELECT user_id ,user_fname ,user_lname ,email ,user_address FROM user";
@@ -201,8 +187,6 @@ function get_user_details()
         return $data;
     }
 }
-// user functions (end)
-// item functions (start)
 function all_items()
 {
     $query = "SELECT * FROM item";
@@ -317,8 +301,6 @@ function get_item_details()
         return $data;
     }
 }
-// item functions (end)
-// admin functions (start)
 function all_admins()
 {
     $query = "SELECT admin_id ,admin_fname ,admin_lname ,admin_email  FROM admin";
@@ -418,8 +400,6 @@ function check_admin($id)
         return 1;
     }
 }
-// admin functions (end)
-// order functions (start)
 function all_orders()
 {
     $query = "SELECT * FROM orders";
@@ -462,4 +442,3 @@ function delete_order()
         get_redirect("orders.php");
     }
 }
-// order functions (end)
