@@ -1,31 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Mar 23, 2022 at 10:34 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `PharmEasy`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
 
 CREATE TABLE `admin` (
   `admin_id` int(3) NOT NULL,
@@ -35,21 +10,8 @@ CREATE TABLE `admin` (
   `admin_password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `admin`
---
-
 INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_fname`, `admin_lname`, `admin_password`) VALUES
-(4, 'admin@gmail.com', 'Mohammed', 'Taha', 'admin'),
-(6, 'admin1@gmail.com', 'MD', 'Faisal', 'admin'),
-(8, 'admin2@gmail.com', 'NITISH', 'SINGH', 'admin'),
-(9, 'admin3@gmail.com', 'NAVEEN', 'RAJ', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `item`
---
+(1, 'admin@gmail.com', 'admin', '1', 'admin');
 
 CREATE TABLE `item` (
   `item_id` int(5) NOT NULL,
@@ -62,10 +24,6 @@ CREATE TABLE `item` (
   `item_quantity` int(3) NOT NULL,
   `item_price` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `item`
---
 
 INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_details`, `item_tags`, `item_image`, `item_quantity`, `item_price`) VALUES
 (15, 'Accu-Chek Active Glucometer Test Strips Box Of 50', 'Accu-Chek', 'machine', 'The blood sugar levels in your body can be easily checked with Accu-Chek Active Strips. These are tested for accuracy, are easy to use daily and no manual coding is required. You can simply insert a test strip, collect a small blood sample on it, allow it to get absorbed and read your blood glucose result from the display. Accu-Chek Glucometer Test Strips can be used by patients suffering from Type 1 and Type 2 diabetes.  You must not use the Accu-Chek Instant Glucometer Strips beyond the expiry date given on the pack. Accu-Chek Active allows you to double-check and verify the displayed result after your test.', 'Accu-Chek Active Glucometer Test Strips Box Of 50 , machine ,blood glucose test strips', 'Strips.jpg', 50, 800),
@@ -100,12 +58,6 @@ INSERT INTO `item` (`item_id`, `item_title`, `item_brand`, `item_cat`, `item_det
 (51, 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets', 'ABBOTT', 'medicine', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets belongs to a class of medicines called nutritional supplements used to prevent and treat nutritional deficiencies and vitamin C deficiency. A nutritional deficiency occurs when the body does not absorb or get enough nutrients from food. Vitamins and minerals are necessary for body development and the prevention of diseases.', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets', 'Limcee Vitamin C 500 mg Orange Flavour Chewable, 15 Tablets.jpeg', 50, 20),
 (52, 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'PRO', 'medicine', 'GNC PRO Performance L-Carnitine delivers 500 mg of important nutrients in each serving which helps in weight loss and facilitates muscle recovery. L-carnitine is a non-essential amino acid that can be synthesized in the body. Now get your daily dose of this essential nutrient and improve muscle growth and recovery as you consume these capsules.', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules', 'GNC PRO Performance L-Carnitine 500 mg, 60 Capsules.jpeg', 60, 1049);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
@@ -115,24 +67,9 @@ CREATE TABLE `orders` (
   `order_status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `orders`
---
-
 INSERT INTO `orders` (`order_id`, `item_id`, `user_id`, `order_quantity`, `order_date`, `order_status`) VALUES
-(210, 27, 85, 1, '2022-03-18', 1),
-(211, 18, 85, 1, '2022-03-18', 1),
-(212, 28, 85, 1, '2022-03-18', 0),
-(213, 33, 55, 2, '2022-03-19', 0),
-(214, 20, 55, 2, '2022-03-19', 0),
-(215, 37, 55, 1, '2022-03-19', 0),
-(216, 31, 55, 4, '2022-03-19', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
+(210, 27, 85, 1, '2023-11-12', 1),
+(211, 18, 85, 1, '2023-11-13', 0);
 
 CREATE TABLE `user` (
   `user_Lname` varchar(20) NOT NULL,
@@ -143,103 +80,36 @@ CREATE TABLE `user` (
   `user_address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `user`
---
-
 INSERT INTO `user` (`user_Lname`, `email`, `user_password`, `user_id`, `user_fname`, `user_address`) VALUES
-('user', 'user@gmail.com', 'user', 55, 'user', 'NO.18, 1ST FLOOR, 3RD MAIN, MUNIYELLAPPA LAYOUT, VINAYAKANAGAR, J.P NAGAR, 5TH PHASE BANGALURU, KARNATAKA, INDIA - 560078'),
-('Banik', 'kalinda@gmail.com', '5Kalinda', 62, 'Kalinda', '4, Charmuni Compd, Link Road, Malad(w)  Mumbai, Maharashtra, 400064'),
-('Krish', 'rani@gmail.com', '1RaniKrish', 63, 'Rani', 'C 50, Opp Mansarover Garden, Sharda Puri  Delhi, Delhi, 110015'),
-('Banik', 'shakti@gmail.com', 'Shakti1221', 64, 'Shakti', '3887/1, Military Road Chowk, Anand Parbat  Delhi, Delhi, 110005'),
-('Peri', 'mehul@gmail.com', 'DXGDZ6DtkY', 66, 'Mehul', '3887/1, Military Road Chowk, Anand Parbat  Delhi, Delhi, 110005'),
-('Goda', 'rajni@gmail.com', 'cp3c2SGrSc', 67, 'Rajni', '1, Basement, Gujarath Indl Estate, Vishweshwar Nagar, Off Aarey Road, Goregaon (e)  Mumbai, Maharashtra, 400063'),
-('Raj', 'kashika@gmail.com', 'sjBL6cPhkr', 68, 'Kashika', '115, Tj Complex, Pankaja Mill Road, Ramanathapuram  Coimbatore, Tamil Nadu, 641045'),
-('Dubey', 'sahima@gmail.com', 'BvM7pmPxeY', 69, 'Sahima', 'Porbunder Castle, 3rd Pasta Lane, Colaba  Mumbai, Maharashtra, 400005'),
-('Iyengar', 'rachana@gmail.com', '52H88tNA7C', 70, 'Rachana', 'E/13, Midc Indl Area, Taloja, Navi Mumbai  Mumbai, Maharashtra, 410208'),
-('Luthra', 'viti@gmail.com', 'YtnjB5Uw7n', 71, 'Viti', '128, Venkatranganpillai Street Tripli  Chennai, Tamil Nadu, 600005'),
-('Mitra', 'minali@gmail.com', '6qECNmtCXx', 72, 'Minali', 'S-8, Divine Home, Ic Colony, Next To Mary Girls School Bo, Mandapeshwar  Mumbai, Maharashtra, 400103'),
-('Vala', 'arjun@gmail.com', 'vLqxtB39DA', 75, 'Arjun', '3887/1, Military Road Chowk, Anand Parbat  Delhi, Delhi, 110005'),
-('Iyengar', 'ritika@gmail.com', 'Y89jnWsKNR', 76, 'Ritika', 'F 154, Main Road, Jagat Puri  Delhi, Delhi, 110051'),
-('Raju', 'drishya@gmail.com', 'ZDMHs6CYS6', 78, 'Drishya', '1/2, Naaz Complex, 3 Nr, N R Road  Bangalore, Karnataka, 560002'),
-('Narasimhan', 'puja@gmail.com', 'wxFuAK3Gxt', 79, 'Puja', 'Shop No.14, Janata Mkt, Nr Rly Stn, Chembur  Mumbai, Maharashtra, 400071'),
-('Rajagopal', 'vasu@gmail.com', 'C5UFaSsBdB', 80, 'Vasu', '458/2a, Hanuman Road  Delhi, Delhi, 110017'),
-('Goyal', 'jyotsna@gmail.com', 'Rr7dnSuCuM', 81, 'Jyotsna', '33 Dahanukar Bldg, 480 Kalbadevi Road, Kalbadevi  Mumbai, Maharashtra, 400002'),
-('Saxena', 'yash@gmail.com', 'HMFRn2RnTv', 82, 'Yash', '14, 50 Rd, Muneshwara Block  Bangalore, Karnataka, 560026'),
-('Setty', 'subhash@gmail.com', '5L4xSHcWEu', 83, 'Subhash', 'R No 15 1st Flr, No 23, Bhupat Bhavan, Vaju Kotak Marg, Ballard Estate  Mumbai, Maharashtra, 400038'),
-('Sankar', 'narendra@gmail.com', 'YrkMMgsg84', 84, 'Narendra', '194/1/7, G. T. Road, Salkia  Kolkata, West Bengal, 711106'),
-('Vala', 'kalind3a@gmail.com', '5Kalinda', 85, 'Arjun', '3887/1, Military Road Chowk, Anand Parbat  Delhi, Delhi, 110005');
+('user', 'user@gmail.com', 'asdf12345678', 85, 'as', 'Kolkata');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
---
--- Indexes for table `item`
---
 ALTER TABLE `item`
   ADD PRIMARY KEY (`item_id`);
 
---
--- Indexes for table `orders`
---
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `user_id` (`user_id`);
 
---
--- Indexes for table `user`
---
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
 ALTER TABLE `admin`
   MODIFY `admin_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- AUTO_INCREMENT for table `item`
---
 ALTER TABLE `item`
   MODIFY `item_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
---
--- AUTO_INCREMENT for table `orders`
---
 ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
 
---
--- AUTO_INCREMENT for table `user`
---
 ALTER TABLE `user`
   MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `orders`
---
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
